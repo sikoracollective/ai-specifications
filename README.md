@@ -1,4 +1,4 @@
-# ai-specifications
+# spec-driven-standards
 
 ## Purpose
 
@@ -9,7 +9,7 @@ These are general, cross-project standards. They are not tied to a specific appl
 ## Project Structure
 
 ```
-ai-specifications/
+spec-driven-standards/
 ├── generalCodingSpecification.md    # Coding standards for AI-generated code
 ├── generalReadmeSpecification.md    # Rules for creating and updating readme files
 ├── generalTestingSpecification.md   # Testing layout, setup, and report standards
