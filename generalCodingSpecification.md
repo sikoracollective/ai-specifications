@@ -1,31 +1,75 @@
 # General Coding Specification
 
-## Duplicate Code
-- Duplicate, or copy and pasted, code should be avoided as much as possible.
-- Always create reusable methods when it makes sense.
+## Scope
+- Implement only what was asked. Do not invent features or change unrelated code.
+- Ask for clarification when requirements are unclear.
+- Do not break public APIs or existing behavior unless requested.
+- When guidance in this document conflicts, follow Scope unless the user asks otherwise.
 
-## Design Patterns
-- Design patterns shall be used when it makes sense to avoid code rewrites if new functionality has to be added at a later date.
+## Simplicity
+- Prefer clear, straightforward code over clever or over-engineered solutions.
+- Avoid duplicate or copy-and-pasted code whenever possible.
+- Create reusable methods when it makes sense.
+- Remove unused code and large commented-out blocks introduced by your changes.
 
-## Security Issues
-- Security should always be kept in mind when generating new code. Correct any found issues during the development process, rather than just at the end of it.
-- If a security review of the code is requested, list all issues and their severity.
-- If any third party code is used, those libraries should be researched to see if they contain any known vulnerbilities. If vulnerabilities are found, the user should be made aware of those and their severity.
-- The latest version of any third party code should always be preferred.
+## Patterns
+- Use design patterns when they make future features easier to add.
+- Prefer the project's existing libraries, structure, and idioms over inventing new ones.
+- Reuse established patterns in the codebase before introducing alternatives.
+
+## Naming and Style
+- Follow the naming and style conventions for the language and project.
+- Match the existing style in the codebase when modifying or extending it.
+
+## Tooling
+- Respect the project's linters, formatters, and type checkers.
+- Do not introduce new violations.
+
+## Dependencies
+- Justify any new dependency before adding it.
+- Prefer the standard library or libraries already in use when they meet the need.
+- Prefer the latest version of any third-party code.
+
+## Security
+- Keep security in mind while writing code. Fix issues as you find them.
+- If a security review is requested, list all issues and their severity.
+- Research third-party libraries for known vulnerabilities.
+- If vulnerabilities are found, tell the user about them and their severity.
+- Never hardcode credentials, API keys, tokens, or other secrets in source code.
+- Use environment variables or a secrets manager for sensitive values.
+- Never commit secrets to version control.
+- Validate and sanitize all external input, including APIs, forms, and CLI arguments.
+- Reject or safely handle invalid input rather than trusting it.
 
 ## Hardening
-- If a hardening review of the code is requested, list all the issues and their severity.
+- Hardening means reducing attack surface and strengthening defenses beyond basic correctness.
+- If a hardening review is requested, list all issues and their severity.
+
+## Error Handling
+- Prefer explicit error handling over silent failures.
+- Do not swallow exceptions without handling or logging them.
+- Surface useful error messages that help diagnose the problem without exposing sensitive details.
+
+## Resource Management
+- Close files, connections, and other resources reliably using the language's preferred approach, such as try/finally or defer.
+
+## Concurrency
+- When writing concurrent code, avoid race conditions and unsafe shared state.
+
+## Performance
+- Avoid obvious inefficiencies when writing or changing code.
+- Do not over-optimize without a clear reason or measured need.
 
 ## Logging
-- Add logging into the code where it makes sense.
-- Follow the best practices for the language when generating log statements.
+- Add logging where it makes sense.
+- Follow the best practices for the language when writing log statements.
 - Use the standard logging tools for the language.
-- No personally identifiable information should be logged.
+- Do not log personally identifiable information.
 - Log levels
-    - Make sure the correct logging level is specified for log messages, if the logging tool allows for it.
-    - If a logging tool does not have logging level functionality, prefix log messages with one of the following log levels, followed by a space: FATAL, ERROR, WARN, INFO, or DEBUG.
-    - Log level words shall be capitalized.
+    - Use the correct logging level when the logging tool supports it.
+    - If the logging tool has no log levels, prefix messages with one of the following, followed by a space: FATAL, ERROR, WARN, INFO, or DEBUG.
+    - Capitalize log level words.
 
 ## Documentation
-- Comments should be added to the code while it is being generated.
-- Comments should be formatted according to the best practices for the language.
+- Add comments while generating the code.
+- Format comments according to the best practices for the language.
